@@ -1,0 +1,16 @@
+PODS:
+  - GifMagic (0.1.0)
+
+DEPENDENCIES:
+  - GifMagic (from `../../`)
+
+EXTERNAL SOURCES:
+  GifMagic:
+    :path: "../../"
+
+SPEC CHECKSUMS:
+  GifMagic: fcef1d3e0b6273b3480f1fe42c1533b4606f0f78
+
+PODFILE CHECKSUM: c793402558c3b90d4ecef56371e907f5f2c525af
+
+COCOAPODS: 1.2.1
