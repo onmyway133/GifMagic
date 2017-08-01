@@ -4,8 +4,8 @@ import CoreGraphics
 
 public class Decoder {
   public struct Result {
-    let gifInfo: GifInfo
-    let images: [NSImage]
+    public let gifInfo: GifInfo
+    public let images: [NSImage]
   }
 
   public init() {
