@@ -3,13 +3,12 @@ import Cocoa
 import CoreGraphics
 
 public class Decoder {
-  /// Decode gif files to multile images
-
   public struct Result {
     let gifInfo: GifInfo
     let images: [NSImage]
   }
 
+  /// Decode gif files to multile images
   public func decode(fileUrl: URL) -> Result? {
     guard let source = CGImageSourceCreateWithURL(fileUrl.toCF(), nil) else {
       return nil
@@ -39,7 +38,6 @@ public class Decoder {
       else {
       return nil
     }
-
 
     guard let colorModel = dictionary[kCGImagePropertyColorModel as String] as? String,
       let depth = dictionary[kCGImagePropertyDepth as String] as? Int,

@@ -18,7 +18,7 @@ func encode() {
     })
 
   let fileUrl = Encoder().encode(images: images, frameDuration: 0.05)
-  print(fileUrl)
+  print(fileUrl as Any)
 }
 
 func decode() {
@@ -28,7 +28,7 @@ func decode() {
     .appendingPathExtension("gif")
 
   let result = Decoder().decode(fileUrl: url)
-  print(result)
+  print(result as Any)
 }
 
 decode()
