@@ -3,5 +3,59 @@ import Cocoa
 import CoreGraphics
 
 public class Decoder {
+  /// Decode gif files to multile images
 
+  public struct Result {
+    let gifInfo: GifInfo
+    let images: [NSImage]
+  }
+
+  public func decode(fileUrl: URL) -> Result? {
+    guard let source = CGImageSourceCreateWithURL(fileUrl.toCF(), nil) else {
+      return nil
+    }
+
+    let frameCount = CGImageSourceGetCount(source)
+    let images: [NSImage] = Array(0..<frameCount).flatMap({
+      guard let cgImage = CGImageSourceCreateImageAtIndex(source, $0, nil) else {
+        return nil
+      }
+
+      return NSImage(cgImage: cgImage, size: .zero)
+    })
+
+    guard let gifInfo = getInfo(source: source) else {
+      return nil
+    }
+
+    return Result(gifInfo: gifInfo, images: images)
+  }
+
+  // MARK: - Helper
+
+  func getInfo(source: CGImageSource) -> GifInfo? {
+    guard let dictionary: JSONDictionary =
+      CGImageSourceCopyPropertiesAtIndex(source, 0, nil)?.toDictionary()
+      else {
+      return nil
+    }
+
+
+    guard let colorModel = dictionary[kCGImagePropertyColorModel as String] as? String,
+      let depth = dictionary[kCGImagePropertyDepth as String] as? Int,
+      let hasAlpha = dictionary[kCGImagePropertyHasAlpha as String] as? Bool,
+      let pixelHeight = dictionary[kCGImagePropertyPixelHeight as String] as? Int,
+      let pixelWidth = dictionary[kCGImagePropertyPixelWidth as String] as? Int,
+      let gif = dictionary[kCGImagePropertyGIFDictionary as String] as? JSONDictionary,
+      let unclampedDelayTime = gif[kCGImagePropertyGIFUnclampedDelayTime as String] as? TimeInterval else {
+        return nil
+    }
+
+    return GifInfo(colorModel: colorModel,
+                   depth: depth,
+                   hasAlpha: hasAlpha,
+                   pixelWidth: pixelWidth,
+                   pixelHeight: pixelHeight,
+                   delayTime: unclampedDelayTime)
+  }
 }

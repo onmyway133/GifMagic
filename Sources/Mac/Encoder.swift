@@ -3,6 +3,8 @@ import Cocoa
 import CoreGraphics
 
 public class Encoder {
+
+  /// Make gif from images
   public func encode(images: [NSImage], frameDuration: TimeInterval) -> URL? {
     let outputUrl = self.outputUrl()
     guard let destination = CGImageDestinationCreateWithURL(outputUrl.toCF(),
