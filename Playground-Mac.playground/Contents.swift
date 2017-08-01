@@ -24,13 +24,26 @@ func encode() {
 func decode() {
   let url = URL(fileURLWithPath: NSHomeDirectory())
     .appendingPathComponent("Downloads")
-    .appendingPathComponent("C43F2F21-02B2-4FA4-B2CB-9839436D6399")
+    .appendingPathComponent("41F54DB9-391E-4EAB-9E6C-17FE21683D5D")
     .appendingPathExtension("gif")
 
   let result = Decoder().decode(fileUrl: url)
   print(result as Any)
 }
 
-decode()
+func modify() {
+  let url = URL(fileURLWithPath: NSHomeDirectory())
+    .appendingPathComponent("Downloads")
+    .appendingPathComponent("41F54DB9-391E-4EAB-9E6C-17FE21683D5D")
+    .appendingPathExtension("gif")
+
+  let fileUrl = Handler().modify(fileUrl: url, closure: { image in
+    return image
+  })
+
+  print(fileUrl as Any)
+}
+
+modify()
 
 
