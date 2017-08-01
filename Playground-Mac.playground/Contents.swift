@@ -34,7 +34,7 @@ func decode() {
 func modify() {
   let url = URL(fileURLWithPath: NSHomeDirectory())
     .appendingPathComponent("Downloads")
-    .appendingPathComponent("41F54DB9-391E-4EAB-9E6C-17FE21683D5D")
+    .appendingPathComponent("5C97AFD3-54C3-4FE2-940F-EFB01BA066DE")
     .appendingPathExtension("gif")
 
   let fileUrl = Handler().modify(fileUrl: url, closure: { image in
