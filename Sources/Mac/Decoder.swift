@@ -8,6 +8,10 @@ public class Decoder {
     let images: [NSImage]
   }
 
+  public init() {
+
+  }
+
   /// Decode gif files to multile images
   public func decode(fileUrl: URL) -> Result? {
     guard let source = CGImageSourceCreateWithURL(fileUrl.toCF(), nil) else {

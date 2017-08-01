@@ -1,7 +1,7 @@
 // GifMagic Mac Playground
 
 import Cocoa
-@testable import GifMagic
+import GifMagic
 
 func encode() {
   let images: [NSImage] = Array(0..<22)

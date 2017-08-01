@@ -4,6 +4,10 @@ import CoreGraphics
 
 public class Encoder {
 
+  public init() {
+
+  }
+
   /// Make gif from images
   public func encode(images: [NSImage], frameDuration: TimeInterval) -> URL? {
     let outputUrl = self.outputUrl()
