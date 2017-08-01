@@ -54,6 +54,6 @@ public class Decoder {
                    hasAlpha: hasAlpha,
                    pixelWidth: pixelWidth,
                    pixelHeight: pixelHeight,
-                   delayTime: unclampedDelayTime)
+                   frameDuration: unclampedDelayTime)
   }
 }

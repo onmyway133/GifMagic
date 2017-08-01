@@ -6,5 +6,5 @@ public struct GifInfo {
   let hasAlpha: Bool
   let pixelWidth: Int
   let pixelHeight: Int
-  let delayTime: TimeInterval
+  let frameDuration: TimeInterval
 }

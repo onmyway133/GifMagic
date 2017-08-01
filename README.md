@@ -21,7 +21,7 @@ let url = Encoder().encode(images: images, frameDuration: 0.05)
 let result = Decoder().decode(fileUrl: gifFileUrl)
 
 result.images
-result.gifInfo.delayTime
+result.gifInfo.frameDuration
 result.gifInfo.pixelWidth
 result.gifInfo.pixelHeight
 ```

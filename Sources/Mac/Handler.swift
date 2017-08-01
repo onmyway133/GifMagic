@@ -11,6 +11,6 @@ public class Handler {
 
     let images = result.images.map(closure)
 
-    return Encoder().encode(images: images, frameDuration: result.gifInfo.delayTime)
+    return Encoder().encode(images: images, frameDuration: result.gifInfo.frameDuration)
   }
 }
