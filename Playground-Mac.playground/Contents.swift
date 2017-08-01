@@ -1,10 +1,9 @@
 // GifMagic Mac Playground
 
 import Cocoa
-import GifMagic
+@testable import GifMagic
 
-var str = "Hello, playground"
-let images: [NSImage] = Array(0..<12)
+let images: [NSImage] = Array(0..<22)
   .map({
     let url = URL(fileURLWithPath: NSHomeDirectory(), relativeTo: nil)
       .appendingPathComponent("Downloads")
@@ -17,5 +16,5 @@ let images: [NSImage] = Array(0..<12)
     return NSImage(contentsOf: $0)
   })
 
-let fileUrl = GifMagic.Encoder().encode(images: images, frameDuration: 0.2)
+let fileUrl = Encoder().encode(images: images, frameDuration: 0.05)
 print(fileUrl)

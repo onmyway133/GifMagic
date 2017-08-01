@@ -30,7 +30,8 @@ public class Encoder {
   // MARK: - Helper
 
   func outputUrl() -> URL {
-    let temp = URL(fileURLWithPath: NSTemporaryDirectory())
+    let temp = URL(fileURLWithPath: NSHomeDirectory())
+      .appendingPathComponent("Downloads")
       .appendingPathComponent(UUID().uuidString)
       .appendingPathExtension("gif")
 
