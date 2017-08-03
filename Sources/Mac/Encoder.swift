@@ -9,8 +9,10 @@ public class Encoder {
   }
 
   /// Make gif from images
-  public func encode(images: [NSImage], frameDuration: TimeInterval) -> URL? {
-    let outputUrl = self.outputUrl()
+  public func encode(images: [NSImage],
+                     frameDuration: TimeInterval,
+                     fileName: String = UUID().uuidString) -> URL? {
+    let outputUrl = self.outputUrl(fileName: fileName)
     guard let destination = CGImageDestinationCreateWithURL(outputUrl.toCF(),
                                                       kUTTypeGIF,
                                                       images.count,
@@ -35,10 +37,10 @@ public class Encoder {
 
   // MARK: - Helper
 
-  func outputUrl() -> URL {
+  func outputUrl(fileName: String) -> URL {
     let temp = URL(fileURLWithPath: NSHomeDirectory())
       .appendingPathComponent("Downloads")
-      .appendingPathComponent(UUID().uuidString)
+      .appendingPathComponent(fileName)
       .appendingPathExtension("gif")
 
     return temp
