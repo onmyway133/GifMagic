@@ -45,13 +45,14 @@ public class Decoder {
 
     guard let colorModel = dictionary[kCGImagePropertyColorModel as String] as? String,
       let depth = dictionary[kCGImagePropertyDepth as String] as? Int,
-      let hasAlpha = dictionary[kCGImagePropertyHasAlpha as String] as? Bool,
       let pixelHeight = dictionary[kCGImagePropertyPixelHeight as String] as? Int,
       let pixelWidth = dictionary[kCGImagePropertyPixelWidth as String] as? Int,
       let gif = dictionary[kCGImagePropertyGIFDictionary as String] as? JSONDictionary,
       let unclampedDelayTime = gif[kCGImagePropertyGIFUnclampedDelayTime as String] as? TimeInterval else {
         return nil
     }
+
+    let hasAlpha = dictionary[kCGImagePropertyHasAlpha as String] as? Bool
 
     return GifInfo(colorModel: colorModel,
                    depth: depth,
