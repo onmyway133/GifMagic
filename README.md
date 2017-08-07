@@ -7,18 +7,20 @@
 [![Platform](https://img.shields.io/cocoapods/p/GifMagic.svg?style=flat)](http://cocoadocs.org/docsets/GifMagic)
 ![Swift](https://img.shields.io/badge/%20in-swift%203.0-orange.svg)
 
-## Usage
+## Encoder
 
-### Encode images into gif file
+#### Encode images into gif file
 
 ```swift
 let url = Encoder().encode(images: images, frameDuration: 0.05)
 ```
 
-### Decode gif file into images and get info
+## Decoder
+
+#### Decode gif file into images and get info
 
 ```swift
-let result = Decoder().decode(fileUrl: gifFileUrl)
+let result = Decoder().decode(gifUrl: url)
 
 result.images
 result.gifInfo.frameDuration
@@ -26,10 +28,12 @@ result.gifInfo.pixelWidth
 result.gifInfo.pixelHeight
 ```
 
-### Modify each frame within the gif
+## Modifier
+
+#### Modify each frame within the gif
 
 ```swift
-let newGifUrl = Handler().modify(fileUrl: url, closure: { image in
+let newGifUrl = Handler().modify(gifUrl: url, closure: { image in
   // Handle image the way you want
   return image
 })

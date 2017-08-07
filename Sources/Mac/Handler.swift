@@ -12,8 +12,8 @@ public class Handler {
   }
 
   /// Modify each frame in the gif
-  public func modify(fileUrl: URL, closure: (NSImage) -> NSImage ) -> URL? {
-    guard let result = decoder.decode(fileUrl: fileUrl) else {
+  public func modify(gifUrl: URL, closure: (NSImage) -> NSImage ) -> URL? {
+    guard let result = decoder.decode(gifUrl: gifUrl) else {
       return nil
     }
 

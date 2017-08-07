@@ -13,8 +13,8 @@ public class Decoder {
   }
 
   /// Decode gif files to multile images
-  public func decode(fileUrl: URL) -> Result? {
-    guard let source = CGImageSourceCreateWithURL(fileUrl.toCF(), nil) else {
+  public func decode(gifUrl: URL) -> Result? {
+    guard let source = CGImageSourceCreateWithURL(gifUrl.toCF(), nil) else {
       return nil
     }
 
