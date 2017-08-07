@@ -3,17 +3,14 @@ import Cocoa
 import CoreGraphics
 
 public class Decoder {
-  public struct Result {
-    public let gifInfo: GifInfo
-    public let images: [NSImage]
-  }
-
   public init() {
 
   }
+}
 
-  /// Decode gif files to multile images
-  public func decode(gifUrl: URL) -> Result? {
+public extension Decoder {
+  /// Decode gif file to multile images
+  public func decode(gifUrl: URL) -> GifInfo? {
     guard let source = CGImageSourceCreateWithURL(gifUrl.toCF(), nil) else {
       return nil
     }
@@ -27,11 +24,12 @@ public class Decoder {
       return NSImage(cgImage: cgImage, size: .zero)
     })
 
-    guard let gifInfo = getInfo(source: source) else {
+    guard var gifInfo = getInfo(source: source) else {
       return nil
     }
 
-    return Result(gifInfo: gifInfo, images: images)
+    gifInfo.images = images
+    return gifInfo
   }
 
   // MARK: - Helper
@@ -40,7 +38,7 @@ public class Decoder {
     guard let dictionary: JSONDictionary =
       CGImageSourceCopyPropertiesAtIndex(source, 0, nil)?.toDictionary()
       else {
-      return nil
+        return nil
     }
 
     guard let colorModel = dictionary[kCGImagePropertyColorModel as String] as? String,
@@ -60,5 +58,12 @@ public class Decoder {
                    pixelWidth: pixelWidth,
                    pixelHeight: pixelHeight,
                    frameDuration: unclampedDelayTime)
+  }
+}
+
+public extension Decoder {
+  /// Decode video file to multile images
+  public func decode(videoUrl: URL) -> VideoInfo? {
+    return nil
   }
 }

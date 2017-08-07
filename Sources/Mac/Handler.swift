@@ -13,12 +13,12 @@ public class Handler {
 
   /// Modify each frame in the gif
   public func modify(gifUrl: URL, closure: (NSImage) -> NSImage ) -> URL? {
-    guard let result = decoder.decode(gifUrl: gifUrl) else {
+    guard let info = decoder.decode(gifUrl: gifUrl) else {
       return nil
     }
 
-    let images = result.images.map(closure)
+    let images = info.images.map(closure)
 
-    return encoder.encode(images: images, frameDuration: result.gifInfo.frameDuration)
+    return encoder.encode(images: images, frameDuration: info.frameDuration)
   }
 }

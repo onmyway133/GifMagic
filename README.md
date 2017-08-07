@@ -20,12 +20,20 @@ let url = Encoder().encode(images: images, frameDuration: 0.05)
 #### Decode gif file into images and get info
 
 ```swift
-let result = Decoder().decode(gifUrl: url)
+let info = Decoder().decode(gifUrl: url)
 
-result.images
-result.gifInfo.frameDuration
-result.gifInfo.pixelWidth
-result.gifInfo.pixelHeight
+info.images
+info.frameDuration
+info.pixelWidth
+info.pixelHeight
+```
+
+#### Decode video file into images and get info
+
+```swift
+let info = Decoder().decode(videoUrl: url)
+
+info.images
 ```
 
 ## Modifier
